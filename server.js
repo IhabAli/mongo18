@@ -12,7 +12,7 @@ var app = express();
 
 
 // Connnect Handlebars to our Express App
-app.engine("Handlebars", expressHandlebars({
+app.engine("handlebars", expressHandlebars({
 	defaultLayout: "main"
 }));
 app.set("view engine", "handlebars");
