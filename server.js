@@ -10,14 +10,6 @@ var PORT = process.env.PORT || 3000;
 // Instantiate our Express App
 var app = express();
 
-// Set up an Express Router
-var router = express.Router();
-
-// Require our routes file pass our router object
-require("./config/routes")(router);
-
-// Designate our public folder as a static directory
-app.use(express.static(__dirname + "/public"));
 
 // Connnect Handlebars to our Express App
 app.engine("Handlebars", expressHandlebars({
@@ -29,6 +21,16 @@ app.set("view engine", "handlebars");
 app.use(bodyParser.urlencoded({
 	extended: false
 }));
+
+// Set up an Express Router
+var router = express.Router();
+
+// Require our routes file pass our router object
+require("./config/routes")(router);
+
+// Designate our public folder as a static directory
+app.use(express.static(__dirname + "/public"));
+
 
 // Have every request go through our router middleware
 app.use(router);
